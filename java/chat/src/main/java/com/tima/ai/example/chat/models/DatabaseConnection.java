@@ -1,6 +1,7 @@
 package com.tima.ai.example.chat.models;
 
 
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -103,6 +104,45 @@ public class DatabaseConnection {
             e.printStackTrace();
         }
         return -1;
+    }
+
+    public boolean deleteToken(String username){
+        String token = "";
+        try {
+            String cmd = "UPDATE users SET token='" + token + "' WHERE username='" + username + "'";
+            Statement statement = this.connection.createStatement();
+            int row = statement.executeUpdate(cmd);
+            return row == 1;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean updateToken(String token, String username){
+        try {
+            String cmd = "UPDATE users SET token='" + token + "' WHERE username='" + username + "'";
+            Statement statement = this.connection.createStatement();
+            int row = statement.executeUpdate(cmd);
+            return row == 1;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public String getToken(String username){
+        try{
+            String q = "SELECT token FROM users WHERE username='" + username + "'";
+            Statement statement = this.connection.createStatement();
+            ResultSet rs = statement.executeQuery(q);
+            if (rs.next()){
+                return rs.getString(0);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public List<Message> getMessages(int senderId, int receiverId){

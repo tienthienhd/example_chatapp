@@ -112,4 +112,124 @@ public class VertxVerticleMain {
     }
 }
 ```
-- 
+## Vert.x Verticles
+### Implementing a Verticle
+#### start()
+- create HTTP or TCP server
+- register handlers on the event bus
+- deploy other verticles
+#### stop()
+### Deploying a Verticle
+- the verticle will be deployed asynchronously, so the verticle may not be deployed by the time deployVerticle() method return.
+- if you need to know exactly when a verticle is full deployed, you can provide a Handler implementation to the deployVerticle():
+```java
+vertx.deployVerticle(new BasicVerticle(), new Handler<AsyncResult<String>>() {
+    @Override
+    public void handle(AsyncResult<String> stringAsyncResult) {
+        System.out.println("BasicVerticle deployment complete");
+        }
+    });
+```
+Or:
+```java
+vertx.deployVerticle(new BasicVerticle(), stringAsyncResult -> {
+        System.out.println("BasicVerticle deployment complete");
+});
+```
+### Deploying a Verticle From Another Verticle
+```java
+public class BasicVerticle extends AbstractVerticle {
+
+    @Override
+    public void start() throws Exception {
+        System.out.println("BasicVerticle started");
+
+        vertx.deployVerticle(new SecondVerticle());
+    }
+
+    @Override
+    public void stop() throws Exception {
+        System.out.println("BasicVerticle stopped");
+    }
+}
+```
+### Using the Event Bus
+#### Listening for messages
+```java
+public class EventBusReceiverVerticle extends AbstractVerticle {
+
+    public void start(Future<Void> startFuture) {
+
+        vertx.eventBus().consumer("anAddress", message -> {
+            System.out.println("1 received message.body() = "
+                + message.body());
+        });
+    }
+}
+```
+#### Sending Message
+- sending msg via the event bus can be done via either the send() or publish() method on the event bus.
+- publish() : send msg to all verticles listening on a given address.
+- send(): sends msg to just one of the listening verticles. Which verticle recieves the msg is decided by Vert.x.
+
+```java
+public class EventBusSenderVerticle extends AbstractVerticle {
+
+    public void start(Future<Void> startFuture) {
+        vertx.eventBus().publish("anAddress", "message 2");
+        vertx.eventBus().send   ("anAddress", "message 1");
+    }
+}
+```
+## Vert.x Buffers
+- help handle data blocks
+- A buffer in Vert.x can hold binay data. Buffer can expand its capacity dynamically.
+### Create a Buffer
+- create with static method buffer()
+```java
+Buffer buffer = Buffer.buffer();
+```
+- create Buffer with some data inside from start:
+```java
+byte[] initialData = new Byte[]{1, 2, 3};
+Buffer buffer2 = Buffer.buffer(initialData);
+```
+- initial buffer with string
+```java
+Buffer buffer3 = Buffer.buffer("initial data");
+```
+- special encoding: UTF8 , UTF16
+```java 
+Buffer buffer4 = Buffer.buffer("initial data", "UTF-8");
+Buffer buffer5 = Buffer.buffer("initial data", "UTF-16");
+```
+### Buffer length
+- buffer.length()
+### Writing to a buffer
+- set single byte at offset
+```java
+buffer.setByte  ( 0, (byte)  127);
+buffer.setShort ( 2, (short) 127);
+buffer.setInt   ( 4,         127);
+buffer.setLong  ( 8,         127);
+buffer.setFloat (16,      127.0F);
+buffer.setDouble(20,      127.0D);
+```
+- write data with append...() methods
+```java
+buffer.appendByte  ((byte)  127);
+buffer.appendShort ((short) 127);
+buffer.appendInt   (        127);
+buffer.appendLong  (        127);
+buffer.appendFloat (     127.0F);
+buffer.appendDouble(     127.0D);
+```
+### Read From a buffer
+```java
+byte   aByte   = buffer.getByte  ( 0);
+short  aShort  = buffer.getShort ( 2);
+int    anInt   = buffer.getInt   ( 4);
+long   aLong   = buffer.getLong  ( 8);
+float  aFloat  = buffer.getFloat (16);
+double aDouble = buffer.getDouble(20);
+```

@@ -63,4 +63,9 @@ public class ServerController implements Runnable {
             e.printStackTrace();
         }
     }
+
+    public static void main(String[] args) {
+        ServerController sc = new ServerController();
+        sc.startListening(5000);
+    }
 }

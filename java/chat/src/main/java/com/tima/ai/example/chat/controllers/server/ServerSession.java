@@ -70,12 +70,14 @@ public class ServerSession implements Runnable {
                 if (line == null){
                     break;
                 }
+                System.out.println(line);
                 String cmd = null;
                 String param = null;
-                int i = line.indexOf(' ');
+                int i = line.indexOf("|");
                 if (i != -1) {
                     cmd = line.substring(0, i);
                     param = line.substring(i).trim();
+                    param = param.substring(1);
                 } else {
                     cmd = line;
                 }
@@ -122,11 +124,11 @@ public class ServerSession implements Runnable {
     }
 
     private void processLogin(String params) {
-        String[] p = params.split("|");
+        String[] p = params.split("[|]");
         String username = p[0];
         String password = p[1];
 
-        int userId = this.authenticateController.login(username, password);
+        String token = this.authenticateController.login(username, password);
         if(userId < 1){
             System.out.println("Login failed!");
             sendResponse("1");
@@ -139,10 +141,24 @@ public class ServerSession implements Runnable {
     }
 
     private void processLogout(String params){
+        String username = params;
+//        this.authenticateController.checkAuth();
 
     }
 
     private void processSignUp(String params){
+        String[] p = params.split("[|]");
+        String username = p[0];
+        String password = p[1];
+
+        boolean done = this.authenticateController.signUp(username, password);
+        if (done){
+            this.processLogin(params);
+            sendResponse("0");
+        } else {
+            System.out.println("Sign up failed");
+            sendResponse("1");
+        }
 
     }
 

@@ -25,7 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="c7137193-709d-4adf-afe5-a1633584d39f">
-        <schema name="chatapp" object-types="table, column, dataset trigger, function, procedure, constraint, index, view" />
+        <schema name="chatapp" object-types="view, procedure, table, index, column, constraint, dataset trigger, function" />
       </connection>
     </loaded-nodes>
   </component>
@@ -39,6 +39,9 @@
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="c7137193-709d-4adf-afe5-a1633584d39f" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="c7137193-709d-4adf-afe5-a1633584d39f" dataset="chatapp.users" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />

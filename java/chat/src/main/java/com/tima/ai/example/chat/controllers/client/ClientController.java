@@ -48,6 +48,7 @@ public class ClientController {
         if (socketServer == null){
             throw new Exception("Haven't connect server yet.");
         }
+        this.output.writeUTF(line + "\r\n");
     }
 
     public boolean login(String username, String password){
@@ -85,11 +86,32 @@ public class ClientController {
         return false;
     }
 
-    public boolean signUp(){
+    public boolean signUp(String usename, String password){
+        try{
+            this.sendLine("SIGN_UP|" + usename + "|" + password);
+            String response = this.readLine();
+            if (response.equals("1")){
+                throw new IOException("Sign up failed");
+            }
+            return true;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
         return false;
     }
 
-    public boolean logout(){
+    public boolean logout(String usename){
+        try{
+            this.sendLine("LOGOUT|" + usename);
+            String response = this.readLine();
+            if (response.equals("1")){
+                throw new IOException("Sign up failed");
+            }
+            return true;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
         return false;
     }
 
@@ -99,6 +121,15 @@ public class ClientController {
 
     public List<Message> getListMsgs(){
         return null;
+    }
+
+    public static void main(String[] args) {
+        ClientController cc = new ClientController("localhost", 5000);
+        if (cc.login("tienthien", "pass")){
+            System.out.println("login successful");
+        }
+
+
     }
 
 }
