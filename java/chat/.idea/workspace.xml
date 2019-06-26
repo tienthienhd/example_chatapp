@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c56d6c17-b18c-4bbb-bbdc-d66e7115dbba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/mongoSettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/tima/ai/example/chat/models/MongoConnectionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/AuthenticateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/AuthenticateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java.md" beforeDir="false" afterPath="$PROJECT_DIR$/../java.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,35 +23,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/AuthenticateController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="37" column="21" lean-forward="true" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#141#142#0" expanded="true" />
-                <element signature="e#164#165#0" expanded="true" />
-                <element signature="e#1252#1253#0" expanded="true" />
-                <element signature="e#1313#1314#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="673">
-              <caret line="68" column="32" lean-forward="true" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
+            <state relative-caret-position="150">
+              <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,15 +35,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientController.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/tima/ai/example/chat/models/MongoConnectionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="108" column="35" selection-start-line="108" selection-start-column="35" selection-end-line="108" selection-end-column="35" />
+            <state relative-caret-position="264">
+              <caret line="79" column="27" lean-forward="true" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoConnection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="106" column="20" selection-start-line="106" selection-start-column="20" selection-end-line="106" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#593#594#0" expanded="true" />
-                <element signature="e#665#666#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -80,33 +67,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/DatabaseConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="126" selection-start-line="126" selection-end-line="126" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/FriendController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-              <folding>
-                <element signature="e#127#128#0" expanded="true" />
-                <element signature="e#150#151#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerSession.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="584">
-              <caret line="145" lean-forward="true" selection-start-line="145" selection-end-line="145" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="2670">
+              <caret line="183" column="17" selection-start-line="183" selection-start-column="17" selection-end-line="183" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -116,8 +78,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -142,12 +104,15 @@
         <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientSession.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/tima/ai/example/chat/models/DatabaseConnectionTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/FriendController.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/DatabaseConnection.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/AuthenticateController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerSession.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoUtils.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/tima/ai/example/chat/models/MongoConnectionTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoConnection.java" />
       </list>
     </option>
   </component>
@@ -191,6 +156,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -240,26 +206,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -273,7 +219,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -309,47 +254,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ClientController">
-    <configuration name="AuthenticateController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.controllers.AuthenticateController" />
-      <module name="chat" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tima.ai.example.chat.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ClientController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.controllers.client.ClientController" />
-      <module name="chat" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tima.ai.example.chat.controllers.client.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ServerController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.controllers.server.ServerController" />
-      <module name="chat" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tima.ai.example.chat.controllers.server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DatabaseConnectionTest.addMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.MongoConnectionTest.addFriend">
+    <configuration name="MongoConnectionTest.addFriend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="chat" />
       <extension name="coverage">
         <pattern>
@@ -358,14 +264,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.tima.ai.example.chat.models" />
-      <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.models.DatabaseConnectionTest" />
-      <option name="METHOD_NAME" value="addMessage" />
+      <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.models.MongoConnectionTest" />
+      <option name="METHOD_NAME" value="addFriend" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DatabaseConnectionTest.checkLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MongoConnectionTest.createAccountFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="chat" />
       <extension name="coverage">
         <pattern>
@@ -374,8 +280,56 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.tima.ai.example.chat.models" />
-      <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.models.DatabaseConnectionTest" />
-      <option name="METHOD_NAME" value="checkLogin" />
+      <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.models.MongoConnectionTest" />
+      <option name="METHOD_NAME" value="createAccountFalse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MongoConnectionTest.createAccountTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tima.ai.example.chat.models.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tima.ai.example.chat.models" />
+      <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.models.MongoConnectionTest" />
+      <option name="METHOD_NAME" value="createAccountTrue" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MongoConnectionTest.logout" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tima.ai.example.chat.models.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tima.ai.example.chat.models" />
+      <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.models.MongoConnectionTest" />
+      <option name="METHOD_NAME" value="logout" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MongoConnectionTest.updateToken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tima.ai.example.chat.models.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tima.ai.example.chat.models" />
+      <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.models.MongoConnectionTest" />
+      <option name="METHOD_NAME" value="updateToken" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -383,11 +337,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClientController" />
-        <item itemvalue="Application.ServerController" />
-        <item itemvalue="Application.AuthenticateController" />
-        <item itemvalue="JUnit.DatabaseConnectionTest.checkLogin" />
-        <item itemvalue="JUnit.DatabaseConnectionTest.addMessage" />
+        <item itemvalue="JUnit.MongoConnectionTest.addFriend" />
+        <item itemvalue="JUnit.MongoConnectionTest.logout" />
+        <item itemvalue="JUnit.MongoConnectionTest.updateToken" />
+        <item itemvalue="JUnit.MongoConnectionTest.createAccountFalse" />
+        <item itemvalue="JUnit.MongoConnectionTest.createAccountTrue" />
       </list>
     </recent_temporary>
   </component>
@@ -405,35 +359,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DatabaseConnectionTest - 2019.06.25 at 10h 36m 43s.xml">
-      <configuration name="DatabaseConnectionTest" configurationId="JUnit" />
+    <history-entry file="MongoConnectionTest_loginTrue - 2019.06.26 at 17h 36m 45s.xml">
+      <configuration name="MongoConnectionTest.loginTrue" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DatabaseConnectionTest_createUser - 2019.06.25 at 10h 37m 06s.xml">
-      <configuration name="DatabaseConnectionTest.createUser" configurationId="JUnit" />
+    <history-entry file="MongoConnectionTest_createAccountTrue - 2019.06.26 at 17h 38m 34s.xml">
+      <configuration name="MongoConnectionTest.createAccountTrue" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DatabaseConnectionTest_addFriend - 2019.06.25 at 10h 37m 31s.xml">
-      <configuration name="DatabaseConnectionTest.addFriend" configurationId="JUnit" />
+    <history-entry file="MongoConnectionTest_createAccountFalse - 2019.06.26 at 17h 38m 40s.xml">
+      <configuration name="MongoConnectionTest.createAccountFalse" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DatabaseConnectionTest_addFriend - 2019.06.25 at 10h 41m 21s.xml">
-      <configuration name="DatabaseConnectionTest.addFriend" configurationId="JUnit" />
+    <history-entry file="MongoConnectionTest_updateToken - 2019.06.26 at 17h 55m 51s.xml">
+      <configuration name="MongoConnectionTest.updateToken" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DatabaseConnectionTest_addMessage - 2019.06.25 at 11h 01m 02s.xml">
-      <configuration name="DatabaseConnectionTest.addMessage" configurationId="JUnit" />
+    <history-entry file="MongoConnectionTest_updateToken - 2019.06.26 at 17h 56m 45s.xml">
+      <configuration name="MongoConnectionTest.updateToken" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DatabaseConnectionTest_checkLogin - 2019.06.25 at 14h 10m 55s.xml">
-      <configuration name="DatabaseConnectionTest.checkLogin" configurationId="JUnit" />
+    <history-entry file="MongoConnectionTest_logout - 2019.06.26 at 17h 57m 34s.xml">
+      <configuration name="MongoConnectionTest.logout" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DatabaseConnectionTest_checkLogin - 2019.06.25 at 14h 11m 09s.xml">
-      <configuration name="DatabaseConnectionTest.checkLogin" configurationId="JUnit" />
+    <history-entry file="MongoConnectionTest_addFriend - 2019.06.26 at 18h 02m 58s.xml">
+      <configuration name="MongoConnectionTest.addFriend" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DatabaseConnectionTest_checkLogin - 2019.06.25 at 14h 11m 56s.xml">
-      <configuration name="DatabaseConnectionTest.checkLogin" configurationId="JUnit" />
+    <history-entry file="MongoConnectionTest_addFriend - 2019.06.26 at 18h 03m 29s.xml">
+      <configuration name="MongoConnectionTest.addFriend" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DatabaseConnectionTest_checkLogin - 2019.06.25 at 14h 15m 48s.xml">
-      <configuration name="DatabaseConnectionTest.checkLogin" configurationId="JUnit" />
+    <history-entry file="MongoConnectionTest_addFriend - 2019.06.26 at 18h 03m 56s.xml">
+      <configuration name="MongoConnectionTest.addFriend" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DatabaseConnectionTest_checkLogin - 2019.06.25 at 14h 15m 58s.xml">
-      <configuration name="DatabaseConnectionTest.checkLogin" configurationId="JUnit" />
+    <history-entry file="MongoConnectionTest_addFriend - 2019.06.26 at 18h 04m 13s.xml">
+      <configuration name="MongoConnectionTest.addFriend" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -449,7 +403,7 @@
     <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15314835" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15314835" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -459,8 +413,8 @@
       <window_info id="DB Browser" order="7" weight="0.18036287" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.31425485" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.31425485" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32937366" />
@@ -469,7 +423,6 @@
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32937366" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32937366" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32937366" />
-      <window_info anchor="right" id="Mongo Explorer" weight="0.32977587" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.2497332" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -478,6 +431,7 @@
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Mongo Explorer" order="8" weight="0.32977587" />
     </layout>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -533,7 +487,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/FriendController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="180">
           <caret line="12" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="e#127#128#0" expanded="true" />
@@ -563,20 +517,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/DatabaseConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="126" selection-start-line="126" selection-end-line="126" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="51" column="21" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -618,8 +558,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerSession.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="584">
+        <state relative-caret-position="359">
           <caret line="145" lean-forward="true" selection-start-line="145" selection-end-line="145" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/DatabaseConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2670">
+          <caret line="183" column="17" selection-start-line="183" selection-start-column="17" selection-end-line="183" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.0.0-M4/junit-platform-commons-1.0.0-M4.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="149" selection-start-line="149" selection-end-line="149" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/tima/ai/example/chat/models/MongoConnectionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="79" column="27" lean-forward="true" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="106" column="20" selection-start-line="106" selection-start-column="20" selection-end-line="106" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
