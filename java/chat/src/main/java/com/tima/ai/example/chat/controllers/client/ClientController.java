@@ -46,9 +46,10 @@ public class ClientController implements IMsgListener, IClientListener{
         return false;
     }
 
-    private void listenClientConnect(){
+    private void listenClientConnect(int port){
         this.clientListener = new ClientListener(this);
-        this.clientListener.startListening(9000);
+        this.clientListener.startListening(port);
+        this.assignPort(this.username, port);
     }
 
     private String readLine() throws IOException {
@@ -75,7 +76,7 @@ public class ClientController implements IMsgListener, IClientListener{
                 this.token = response.split("[|]")[1];
             }
             this.username = username;
-            listenClientConnect();
+            listenClientConnect(9000);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -105,7 +106,9 @@ public class ClientController implements IMsgListener, IClientListener{
             if (response.startsWith(responseNotOk)){
                 throw new Exception("Sent msg failed");
             }
-            this.clientSession.sendMsg(msg);
+            if (this.clientSession != null) {
+                this.clientSession.sendMsg(msg);
+            }
             return true;
         } catch (Exception e){
             e.printStackTrace();
@@ -197,6 +200,40 @@ public class ClientController implements IMsgListener, IClientListener{
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void assignPort(String username, int port){
+        try {
+            sendLine(this.token + "|ADD_PORT|" + username + "|" + port);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public int getPort(String username){
+        try {
+            sendLine(this.token + "|PORT|" + username);
+            String response = readLine();
+            if (response.startsWith(responseNotOk)){
+                throw new IOException("Get list friend failed");
+            }
+            response = response.substring(responseOk.length() + 1);
+            if(response.length() > 2){
+                return Integer.parseInt(response);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    public void connectClient(String ip, int port){
+        try {
+            Socket s = new Socket(ip, port);
+            this.clientSession = new ClientSession(s, this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

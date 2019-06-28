@@ -29,6 +29,7 @@ public class ClientListener implements Runnable{
 
             this.isListening = true;
             this.thread = new Thread(this);
+//            this.thread.setDaemon(true);
             this.thread.start();
         }
         System.out.println("Server is started and listening on port: " + port);

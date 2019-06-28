@@ -11,6 +11,7 @@ import java.io.DataOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.List;
 
 public class ServerSession implements Runnable {
@@ -30,6 +31,8 @@ public class ServerSession implements Runnable {
     private ChatController chatController;
     private FriendController friendController;
 
+    private HashMap<String, Integer> mapUsernamePort;
+
     public ServerSession(Socket s) throws IOException {
         this.socket = s;
         this.input = new DataInputStream(s.getInputStream());
@@ -38,6 +41,8 @@ public class ServerSession implements Runnable {
         this.authenticateController = new AuthenticateController();
         this.chatController = new ChatController();
         this.friendController = new FriendController();
+
+        this.mapUsernamePort = new HashMap<>();
     }
 
     public void start() {
@@ -74,21 +79,12 @@ public class ServerSession implements Runnable {
                 }
                 System.out.println(line);
                 String[] listParams = line.split("[|]");
-//                int i = line.indexOf("|");
-//                if (i != -1) {
-//                    cmd = line.substring(0, i);
-//                    param = line.substring(i).trim();
-//                    param = param.substring(1);
-//                } else {
-//                    cmd = line;
-//                }
+
                 String token = listParams[0];
                 String cmd = listParams[1];
                 String[] param = new String[listParams.length - 2];
                 System.arraycopy(listParams, 2, param, 0, param.length);
-//                System.out.println(token);
-//                System.out.println(cmd);
-//                System.out.println(Arrays.toString(param));
+
 
                 this.processCommand(token, cmd, param);
             }
@@ -129,7 +125,18 @@ public class ServerSession implements Runnable {
             if (checkAuthod(token)) {
                 this.processSendMsg(params);
             }
+        } else if (cmd.equals("PORT")){
+            if (checkAuthod(token)){
+                this.processMapPort(params);
+            }
         }
+    }
+
+    private void processMapPort(String[] params) {
+        String username = params[0];
+        Integer port = Integer.parseInt(params[1]);
+
+        this.mapUsernamePort.put(username, port);
     }
 
     private boolean checkAuthod(String token) {
