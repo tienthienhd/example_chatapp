@@ -2,12 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c56d6c17-b18c-4bbb-bbdc-d66e7115dbba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/tima/ai/example/chat/models/MongoConnectionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientVerticle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/IClientListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/IMsgListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/MainClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/MainServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerVerticle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/AuthenticateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/AuthenticateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/FriendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/FriendController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/DatabaseConnection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/Friend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/tima/ai/example/chat/models/DatabaseConnectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/tima/ai/example/chat/models/DatabaseConnectionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/tima/ai/example/chat/models/MongoConnectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/tima/ai/example/chat/models/MongoConnectionTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -17,73 +35,189 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/tima/ai/example/chat/models/MongoConnectionTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="79" column="27" lean-forward="true" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="106" column="20" selection-start-line="106" selection-start-column="20" selection-end-line="106" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/DatabaseConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2670">
-              <caret line="183" column="17" selection-start-line="183" selection-start-column="17" selection-end-line="183" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5500642">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/MainServer.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="135">
+                  <caret line="9" selection-start-line="9" selection-end-line="9" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoConnection.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="245">
+                  <caret line="82" column="24" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/FriendController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="255">
+                  <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#127#128#0" expanded="true" />
+                    <element signature="e#150#151#0" expanded="true" />
+                    <element signature="e#453#454#0" expanded="true" />
+                    <element signature="e#520#521#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/AuthenticateController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="315">
+                  <caret line="28" selection-start-line="28" selection-end-line="28" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#451#452#0" expanded="true" />
+                    <element signature="e#474#475#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerSession.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="259">
+                  <caret line="225" column="33" lean-forward="true" selection-start-line="225" selection-start-column="33" selection-end-line="225" selection-end-column="33" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-30">
+                  <caret line="49" column="46" lean-forward="true" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#720#721#0" expanded="true" />
+                    <element signature="e#792#793#0" expanded="true" />
+                    <element signature="e#4015#4023#0" expanded="true" />
+                    <element signature="e#5373#5382#0" expanded="true" />
+                    <element signature="e#6216#6217#0" expanded="true" />
+                    <element signature="e#6252#6253#0" expanded="true" />
+                    <element signature="e#6396#6397#0" expanded="true" />
+                    <element signature="e#6451#6452#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientListener.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="184">
+                  <caret line="17" column="19" lean-forward="true" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#491#492#0" expanded="true" />
+                    <element signature="e#510#511#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/IClientListener.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="75">
+                  <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="814">
+                  <caret line="64" column="5" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="64" selection-end-column="5" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/IMsgListener.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="45">
+                  <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/MainClient.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="90">
+                  <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientSession.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="270">
+                  <caret line="18" column="35" lean-forward="true" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
+    <findStrings>
+      <find>input</find>
+      <find>output</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>inputServer</replace>
+      <replace>outputServer</replace>
+    </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat</dir>
     </dirStrings>
@@ -95,24 +229,37 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/DatabaseConnectionTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/Controller.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/ChatController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/client/ClientController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/ServerController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/ServerSection.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/ClientController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientSession.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/tima/ai/example/chat/models/DatabaseConnectionTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/FriendController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/DatabaseConnection.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/AuthenticateController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerSession.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/Friend.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/tima/ai/example/chat/models/DatabaseConnectionTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/tima/ai/example/chat/models/MongoConnectionTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/Message.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoConnection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerVerticle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientForm.form" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/WebServerVerticle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientVerticle.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/Controller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/MainServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/AuthenticateController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/MainClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/FriendController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/ChatController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerSession.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/IMsgListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientSession.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/IClientListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientController.java" />
       </list>
     </option>
   </component>
@@ -145,10 +292,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="546" />
-    <option name="y" value="177" />
-    <option name="width" value="1440" />
-    <option name="height" value="789" />
+    <option name="y" value="25" />
+    <option name="width" value="960" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -157,6 +303,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -206,7 +353,18 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="chat" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chat" type="b2602c69:ProjectViewProjectNode" />
@@ -218,7 +376,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -227,9 +384,9 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.mongoOptions" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -254,8 +411,47 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MongoConnectionTest.addFriend">
-    <configuration name="MongoConnectionTest.addFriend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.MainClient">
+    <configuration name="MainClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.controllers.client.MainClient" />
+      <module name="chat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tima.ai.example.chat.controllers.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.controllers.server.MainServer" />
+      <module name="chat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tima.ai.example.chat.controllers.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MongoConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.models.MongoConnection" />
+      <module name="chat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tima.ai.example.chat.models.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MongoConnectionTest.getListFriends" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="chat" />
       <extension name="coverage">
         <pattern>
@@ -265,13 +461,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.tima.ai.example.chat.models" />
       <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.models.MongoConnectionTest" />
-      <option name="METHOD_NAME" value="addFriend" />
+      <option name="METHOD_NAME" value="getListFriends" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MongoConnectionTest.createAccountFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MongoConnectionTest.sendMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="chat" />
       <extension name="coverage">
         <pattern>
@@ -281,55 +477,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.tima.ai.example.chat.models" />
       <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.models.MongoConnectionTest" />
-      <option name="METHOD_NAME" value="createAccountFalse" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MongoConnectionTest.createAccountTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="chat" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tima.ai.example.chat.models.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.tima.ai.example.chat.models" />
-      <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.models.MongoConnectionTest" />
-      <option name="METHOD_NAME" value="createAccountTrue" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MongoConnectionTest.logout" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="chat" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tima.ai.example.chat.models.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.tima.ai.example.chat.models" />
-      <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.models.MongoConnectionTest" />
-      <option name="METHOD_NAME" value="logout" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MongoConnectionTest.updateToken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="chat" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tima.ai.example.chat.models.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.tima.ai.example.chat.models" />
-      <option name="MAIN_CLASS_NAME" value="com.tima.ai.example.chat.models.MongoConnectionTest" />
-      <option name="METHOD_NAME" value="updateToken" />
+      <option name="METHOD_NAME" value="sendMessage" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -337,11 +485,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MongoConnectionTest.addFriend" />
-        <item itemvalue="JUnit.MongoConnectionTest.logout" />
-        <item itemvalue="JUnit.MongoConnectionTest.updateToken" />
-        <item itemvalue="JUnit.MongoConnectionTest.createAccountFalse" />
-        <item itemvalue="JUnit.MongoConnectionTest.createAccountTrue" />
+        <item itemvalue="Application.MainClient" />
+        <item itemvalue="Application.MainServer" />
+        <item itemvalue="Application.MongoConnection" />
+        <item itemvalue="JUnit.MongoConnectionTest.sendMessage" />
+        <item itemvalue="JUnit.MongoConnectionTest.getListFriends" />
       </list>
     </recent_temporary>
   </component>
@@ -359,18 +507,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MongoConnectionTest_loginTrue - 2019.06.26 at 17h 36m 45s.xml">
-      <configuration name="MongoConnectionTest.loginTrue" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MongoConnectionTest_createAccountTrue - 2019.06.26 at 17h 38m 34s.xml">
-      <configuration name="MongoConnectionTest.createAccountTrue" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MongoConnectionTest_createAccountFalse - 2019.06.26 at 17h 38m 40s.xml">
-      <configuration name="MongoConnectionTest.createAccountFalse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MongoConnectionTest_updateToken - 2019.06.26 at 17h 55m 51s.xml">
-      <configuration name="MongoConnectionTest.updateToken" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MongoConnectionTest_updateToken - 2019.06.26 at 17h 56m 45s.xml">
       <configuration name="MongoConnectionTest.updateToken" configurationId="JUnit" />
     </history-entry>
@@ -389,6 +525,18 @@
     <history-entry file="MongoConnectionTest_addFriend - 2019.06.26 at 18h 04m 13s.xml">
       <configuration name="MongoConnectionTest.addFriend" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MongoConnectionTest_checkExistTrue - 2019.06.27 at 09h 20m 12s.xml">
+      <configuration name="MongoConnectionTest.checkExistTrue" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MongoConnectionTest_loginTrue - 2019.06.27 at 09h 22m 40s.xml">
+      <configuration name="MongoConnectionTest.loginTrue" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MongoConnectionTest_getListFriends - 2019.06.27 at 09h 34m 55s.xml">
+      <configuration name="MongoConnectionTest.getListFriends" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MongoConnectionTest_sendMessage - 2019.06.27 at 09h 39m 28s.xml">
+      <configuration name="MongoConnectionTest.sendMessage" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -401,9 +549,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15314835" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16862327" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -412,9 +559,9 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="DB Browser" order="7" weight="0.18036287" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.31425485" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39956802" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24514039" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32937366" />
@@ -423,6 +570,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32937366" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32937366" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32937366" />
+      <window_info anchor="bottom" id="Inspection Results" order="12" weight="0.32937366" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.2497332" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -434,6 +582,24 @@
       <window_info anchor="right" id="Mongo Explorer" order="8" weight="0.32977587" />
     </layout>
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerSession.java</url>
+          <line>70</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerSession.java</url>
+          <line>121</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
@@ -444,16 +610,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/DatabaseConnectionTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/server.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/tima/ai/example/chat/models/DatabaseConnectionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jrt:///usr/lib/jvm/java-11-openjdk-amd64!/java.sql/java/sql/DriverManager.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -461,132 +617,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/Friend.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/package-info.java">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="45" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/ChatController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/FriendController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#127#128#0" expanded="true" />
-            <element signature="e#150#151#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
     </entry>
     <entry file="jrt:///usr/lib/jvm/java-11-openjdk-amd64!/jdk.net/jdk/net/ExtendedSocketOptions.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2974">
           <caret line="263" column="8" selection-start-line="263" selection-start-column="8" selection-end-line="263" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientSession.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="108" column="35" selection-start-line="108" selection-start-column="35" selection-end-line="108" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#593#594#0" expanded="true" />
-            <element signature="e#665#666#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="673">
-          <caret line="68" column="32" lean-forward="true" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/AuthenticateController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="37" column="21" lean-forward="true" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#141#142#0" expanded="true" />
-            <element signature="e#164#165#0" expanded="true" />
-            <element signature="e#1252#1253#0" expanded="true" />
-            <element signature="e#1313#1314#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerSession.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="145" lean-forward="true" selection-start-line="145" selection-end-line="145" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/DatabaseConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2670">
-          <caret line="183" column="17" selection-start-line="183" selection-start-column="17" selection-end-line="183" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -597,17 +634,271 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/Friend.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding>
+            <element signature="e#536#537#0" expanded="true" />
+            <element signature="e#567#568#0" expanded="true" />
+            <element signature="e#615#616#0" expanded="true" />
+            <element signature="e#655#656#0" expanded="true" />
+            <element signature="e#692#693#0" expanded="true" />
+            <element signature="e#725#726#0" expanded="true" />
+            <element signature="e#777#778#0" expanded="true" />
+            <element signature="e#821#822#0" expanded="true" />
+            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#893#894#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+            <element signature="e#995#996#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/DatabaseConnection.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/tima/ai/example/chat/models/DatabaseConnectionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="25" lean-forward="true" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/tima/ai/example/chat/models/MongoConnectionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="79" column="27" lean-forward="true" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="27" />
+        <state relative-caret-position="528">
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="44" column="33" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
+          <folding>
+            <element signature="e#657#658#0" expanded="true" />
+            <element signature="e#685#686#0" expanded="true" />
+            <element signature="e#591#592#0" expanded="true" />
+            <element signature="e#620#621#0" expanded="true" />
+            <element signature="e#664#665#0" expanded="true" />
+            <element signature="e#700#701#0" expanded="true" />
+            <element signature="e#735#736#0" expanded="true" />
+            <element signature="e#766#767#0" expanded="true" />
+            <element signature="e#814#815#0" expanded="true" />
+            <element signature="e#854#855#0" expanded="true" />
+            <element signature="e#884#885#0" expanded="true" />
+            <element signature="e#910#911#0" expanded="true" />
+            <element signature="e#948#949#0" expanded="true" />
+            <element signature="e#978#979#0" expanded="true" />
+            <element signature="e#1013#1014#0" expanded="true" />
+            <element signature="e#1046#1047#0" expanded="true" />
+            <element signature="e#1096#1097#0" expanded="true" />
+            <element signature="e#1140#1141#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerLog.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerLog.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientForm.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerVerticle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#278#279#0" expanded="true" />
+            <element signature="e#314#315#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientVerticle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="22" column="54" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/MainServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/AuthenticateController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#474#475#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/FriendController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#127#128#0" expanded="true" />
+            <element signature="e#150#151#0" expanded="true" />
+            <element signature="e#453#454#0" expanded="true" />
+            <element signature="e#520#521#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/ChatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#124#125#0" expanded="true" />
+            <element signature="e#147#148#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/models/MongoConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="106" column="20" selection-start-line="106" selection-start-column="20" selection-end-line="106" selection-end-column="20" />
+        <state relative-caret-position="245">
+          <caret line="82" column="24" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/MainClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/IMsgListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientSession.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="35" lean-forward="true" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="64" column="5" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="64" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/IClientListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="17" column="19" lean-forward="true" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#491#492#0" expanded="true" />
+            <element signature="e#510#511#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/client/ClientController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="49" column="46" lean-forward="true" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#792#793#0" expanded="true" />
+            <element signature="e#4015#4023#0" expanded="true" />
+            <element signature="e#5373#5382#0" expanded="true" />
+            <element signature="e#6216#6217#0" expanded="true" />
+            <element signature="e#6252#6253#0" expanded="true" />
+            <element signature="e#6396#6397#0" expanded="true" />
+            <element signature="e#6451#6452#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tima/ai/example/chat/controllers/server/ServerSession.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="225" column="33" lean-forward="true" selection-start-line="225" selection-start-column="33" selection-end-line="225" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

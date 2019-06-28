@@ -4,36 +4,36 @@ import java.util.Date;
 
 public class Friend {
 
-    private int userId;
-    private int friendId;
+    private String username;
+    private String friendName;
     private Date modifiedDate;
 
     public Friend() {
-        this.userId = -1;
-        this.friendId = -1;
+        this.username = "";
+        this.friendName = "";
         this.modifiedDate = new Date();
     }
 
-    public Friend(int userId, int friendId, Date modifiedDate) {
-        this.userId = userId;
-        this.friendId = friendId;
+    public Friend(String username, String friendName, Date modifiedDate) {
+        this.username = username;
+        this.friendName = friendName;
         this.modifiedDate = modifiedDate;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public int getFriendId() {
-        return friendId;
+    public String getFriendName() {
+        return friendName;
     }
 
-    public void setFriendId(int friendId) {
-        this.friendId = friendId;
+    public void setFriendName(String friendName) {
+        this.friendName = friendName;
     }
 
     public Date getModifiedDate() {

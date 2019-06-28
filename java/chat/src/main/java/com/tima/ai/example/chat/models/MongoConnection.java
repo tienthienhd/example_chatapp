@@ -8,12 +8,15 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.UpdateResult;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
-import javax.tools.DocumentationTool;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+
+import static com.mongodb.client.model.Projections.*;
 
 public class MongoConnection {
 
@@ -34,16 +37,14 @@ public class MongoConnection {
 
 
     public boolean checkExist(String username){
-        BasicDBObject whereQuery = new BasicDBObject();
-        whereQuery.put("username", username);
-        FindIterable<Document> iterDoc = this.userCollection.find(whereQuery);
+        FindIterable<Document> iterDoc = this.userCollection.find(new Document("username", username));
         return iterDoc.first() != null;
     }
 
     public boolean login(String username, String password){
-        BasicDBObject whereQuery = new BasicDBObject();
-        whereQuery.put("username", username);
-        whereQuery.put("password", password);
+        Document whereQuery = new Document();
+        whereQuery.append("username", username);
+        whereQuery.append("password", password);
         FindIterable<Document> iterDoc = this.userCollection.find(whereQuery);
         return iterDoc.first() != null;
     }
@@ -54,9 +55,11 @@ public class MongoConnection {
         return updateResult.getModifiedCount() > 0;
     }
 
-    public boolean checkToken(String token, String username){
-        return false;
-
+    public String getToken(String username){
+        Document q = new Document("username", username);
+        FindIterable<Document> iterDoc = this.userCollection.find(q).projection(fields(include("token"), excludeId()));
+        String token = iterDoc.first().getString("token");
+        return token;
     }
 
     public boolean createAccount(String username, String password){
@@ -79,9 +82,9 @@ public class MongoConnection {
         if (!this.checkExist(username) || !this.checkExist(friendUsername)){
             return false;
         }
-        BasicDBObject whereQuery = new BasicDBObject();
-        whereQuery.put("username", username);
-        whereQuery.put("friend_name", friendUsername);
+        Document whereQuery = new Document();
+        whereQuery.append("username", username);
+        whereQuery.append("friend_name", friendUsername);
         FindIterable<Document> iterDoc = this.friendCollection.find(whereQuery);
         if(iterDoc.first() != null) {
             return false;
@@ -96,23 +99,80 @@ public class MongoConnection {
     }
 
     public List<Friend> getListFriends(String username){
-        BasicDBObject whereQuery = new BasicDBObject();
+        Document whereQuery = new Document();
         whereQuery.put("username", username);
-        FindIterable<Document> iterDoc = this.friendCollection.find(whereQuery);
+        FindIterable<Document> iterDoc = this.friendCollection.find(whereQuery)
+                .projection(fields(include("username", "friend_name", "date"), excludeId()));
 
+        ArrayList<Friend> listFriends = new ArrayList<Friend>();
         Iterator it = iterDoc.iterator();
         while(it.hasNext()){
-
+            Document d = (Document) it.next();
+            String friend_name = d.getString("friend_name");
+            Date date = d.getDate("date");
+            Friend f = new Friend(username, friend_name, date);
+            listFriends.add(f);
         }
-        return null;
+        return listFriends;
     }
 
     public boolean sendMessage(String sender, String receiver, String msg){
-        return false;
+        if (!this.checkExist(sender) || !this.checkExist(receiver)){
+            return false;
+        }
+
+        Document d = new Document("sender", sender)
+                .append("receiver", receiver)
+                .append("msg", msg)
+                .append("created_date", new Date());
+        this.msgCollection.insertOne(d);
+        return true;
     }
 
-    public List<Message> getListMessages(String sender, String receiver){
+    public List<Message> getListMessages(String sender, String receiver, int pageSize, String lastId){
+        Document query = null;
         // pagination
-        return null;
+        if(lastId != null) {
+            query = new Document("_id", new Document("$lt", new ObjectId(lastId)))
+                    .append("sender", sender)
+                    .append("receiver", receiver);
+        } else {
+            query = new Document()
+                    .append("sender", sender)
+                    .append("receiver", receiver);
+        }
+        FindIterable<Document> iterMsg = this.msgCollection.find(query).sort(new Document("_id", -1)).limit(pageSize);
+
+        ArrayList<Message> listMsgs = new ArrayList<Message>();
+        Iterator it = iterMsg.iterator();
+        while(it.hasNext()){
+            Document d = (Document) it.next();
+
+            String msgId = d.getObjectId("_id").toString();
+            String msg = d.getString("msg");
+            Date created_date = d.getDate("created_date");
+
+            Message m = new Message(msgId, sender, receiver, msg, created_date);
+            listMsgs.add(m);
+        }
+
+        return listMsgs;
     }
+
+//    public static void main(String[] args) throws UnknownHostException {
+//        MongoConnection mongoConnection = new MongoConnection();
+//        List<Message> listMsgs = mongoConnection.getListMessages("tienthien", "user2", 1, null);
+//        String lastId = listMsgs.get(listMsgs.size() - 1).getMsgId();
+//        for (Message m: listMsgs
+//             ) {
+//            System.out.println(m);
+//        }
+//        System.out.println("page 1: " + lastId);
+//        listMsgs = mongoConnection.getListMessages("tienthien", "user2", 1, lastId);
+//        for (Message m: listMsgs
+//             ) {
+//            System.out.println(m);
+//        }
+//
+//    }
 }

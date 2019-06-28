@@ -21,10 +21,10 @@ public class AuthenticateController extends Controller {
         String username = claims.getId();
         long expiration = claims.getExpiration().getTime();
         long now = System.currentTimeMillis();
-        if (now - expiration <= 0){
+        if (expiration - now <= 0){
             return false;
         }
-        String tokendb = Controller.dbCon.getToken(username);
+        String tokendb = Controller.mongoCon.getToken(username);
         if(token.equals(tokendb)){
             return true;
         }
@@ -32,18 +32,21 @@ public class AuthenticateController extends Controller {
     }
 
     public String login(String username, String password){
-        int userId = Controller.dbCon.checkLogin(username, password);
+        boolean done = Controller.mongoCon.login(username, password);
+        if(!done){
+            return null;
+        }
         String token = this.createJWT(username);
-        Controller.dbCon.updateToken(token, username);
+        Controller.mongoCon.updateToken(token, username);
         return token;
     }
 
     public boolean logout(String username){
-        return Controller.dbCon.deleteToken(username);
+        return Controller.mongoCon.logout(username);
     }
 
     public boolean signUp(String username, String password){
-        boolean done = Controller.dbCon.createUser(username, password);
+        boolean done = Controller.mongoCon.createAccount(username, password);
         return done;
     }
 

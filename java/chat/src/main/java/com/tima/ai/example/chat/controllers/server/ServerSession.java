@@ -3,18 +3,21 @@ package com.tima.ai.example.chat.controllers.server;
 import com.tima.ai.example.chat.controllers.AuthenticateController;
 import com.tima.ai.example.chat.controllers.ChatController;
 import com.tima.ai.example.chat.controllers.FriendController;
+import com.tima.ai.example.chat.models.Friend;
+import com.tima.ai.example.chat.models.Message;
 
 import java.io.DataInputStream;
-import java.io.DataOutput;
 import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
-import java.util.TreeMap;
 
 public class ServerSession implements Runnable {
+
+    final static String responseOk = "ok";
+    final static String responseNotOk = "not";
+
 
     private Socket socket;
     private Thread thread;
@@ -23,7 +26,6 @@ public class ServerSession implements Runnable {
     private DataInputStream input;
     private DataOutputStream output;
 
-    private int userId;
     private AuthenticateController authenticateController;
     private ChatController chatController;
     private FriendController friendController;
@@ -38,7 +40,7 @@ public class ServerSession implements Runnable {
         this.friendController = new FriendController();
     }
 
-    public  void start(){
+    public void start() {
         this.isAlive = true;
         if (this.thread == null) {
             this.thread = new Thread(this);
@@ -46,44 +48,52 @@ public class ServerSession implements Runnable {
         }
     }
 
-    public void stop(){
+    public void stop() {
         try {
-            if (this.socket != null){
+            if (this.socket != null) {
                 this.socket.close();
                 this.socket = null;
             }
 
-            if (this.thread != null){
+            if (this.thread != null) {
                 this.thread.interrupt();
                 this.thread = null;
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void run() {
         String line = null;
-        try{
-            while (this.isAlive){
+        try {
+            while (this.isAlive) {
                 line = this.input.readUTF();
-                if (line == null){
+                if (line == null) {
                     break;
                 }
                 System.out.println(line);
-                String cmd = null;
-                String param = null;
-                int i = line.indexOf("|");
-                if (i != -1) {
-                    cmd = line.substring(0, i);
-                    param = line.substring(i).trim();
-                    param = param.substring(1);
-                } else {
-                    cmd = line;
-                }
+                String[] listParams = line.split("[|]");
+//                int i = line.indexOf("|");
+//                if (i != -1) {
+//                    cmd = line.substring(0, i);
+//                    param = line.substring(i).trim();
+//                    param = param.substring(1);
+//                } else {
+//                    cmd = line;
+//                }
+                String token = listParams[0];
+                String cmd = listParams[1];
+                String[] param = new String[listParams.length - 2];
+                System.arraycopy(listParams, 2, param, 0, param.length);
+//                System.out.println(token);
+//                System.out.println(cmd);
+//                System.out.println(Arrays.toString(param));
 
-                this.processCommand(cmd, param);
+                this.processCommand(token, cmd, param);
             }
+        } catch (EOFException e) {
+            System.out.println("Connection is disconnect");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -91,29 +101,43 @@ public class ServerSession implements Runnable {
         }
     }
 
-    private void processCommand(String cmd, String params){
+    private void processCommand(String token, String cmd, String[] params) {
         cmd = cmd.toUpperCase();
         cmd = cmd.trim();
 
-        if (cmd.equals("LOGIN")){
+        if (cmd.equals("LOGIN")) {
             this.processLogin(params);
-        } else if (cmd.equals("LOGOUT")){
-            this.processLogout(params);
-        } else if (cmd.equals("SIGN_UP")){
+        } else if (cmd.equals("LOGOUT")) {
+            if (checkAuthod(token)) {
+                this.processLogout(params);
+            }
+        } else if (cmd.equals("SIGN_UP")) {
             this.processSignUp(params);
-        } else if (cmd.equals("LIST_FRIEND")){
-            this.processListFriends(params);
-        } else if (cmd.equals("ADD_FRIEND")){
-            this.processAddFriend(params);
-        } else if (cmd.equals("LIST_MSG")){
-            this.processListMsgs(params);
-        } else if (cmd.equals("SEND_MSG")){
-            this.processSendMsg(params);
+        } else if (cmd.equals("LIST_FRIEND")) {
+            if (checkAuthod(token)) {
+                this.processListFriends(params);
+            }
+        } else if (cmd.equals("ADD_FRIEND")) {
+            if (checkAuthod(token)) {
+                this.processAddFriend(params);
+            }
+        } else if (cmd.equals("LIST_MSG")) {
+            if (checkAuthod(token)) {
+                this.processListMsgs(params);
+            }
+        } else if (cmd.equals("SEND_MSG")) {
+            if (checkAuthod(token)) {
+                this.processSendMsg(params);
+            }
         }
     }
 
+    private boolean checkAuthod(String token) {
+        return this.authenticateController.checkAuth(token);
+    }
+
     private void sendResponse(String res) {
-        res = res + "\r\n";
+//        res = res + "\r\n";
 
         try {
             this.output.writeUTF(res);
@@ -123,58 +147,114 @@ public class ServerSession implements Runnable {
         }
     }
 
-    private void processLogin(String params) {
-        String[] p = params.split("[|]");
-        String username = p[0];
-        String password = p[1];
+    private void processLogin(String[] params) {
+//        String[] p = params.split("[|]");
+        String username = params[0];
+        String password = params[1];
 
         String token = this.authenticateController.login(username, password);
-        if(userId < 1){
+        if (token == null) {
             System.out.println("Login failed!");
-            sendResponse("1");
+            sendResponse(responseNotOk);
         } else {
-            this.userId = userId;
-            sendResponse("0");
+            sendResponse(responseOk + "|" + token);
         }
+    }
 
+    private void processLogout(String[] params) {
+        String username = params[0];
+        this.authenticateController.logout(username);
 
     }
 
-    private void processLogout(String params){
-        String username = params;
-//        this.authenticateController.checkAuth();
-
-    }
-
-    private void processSignUp(String params){
-        String[] p = params.split("[|]");
-        String username = p[0];
-        String password = p[1];
+    private void processSignUp(String[] params) {
+//        String[] p = params.split("[|]");
+        String username = params[0];
+        String password = params[1];
 
         boolean done = this.authenticateController.signUp(username, password);
-        if (done){
+        if (done) {
             this.processLogin(params);
-            sendResponse("0");
+            sendResponse(responseOk);
         } else {
             System.out.println("Sign up failed");
-            sendResponse("1");
+            sendResponse(responseNotOk);
         }
 
     }
 
-    private void processListFriends(String params){
+    private void processListFriends(String[] params) {
+        String username = params[0];
+        List<Friend> listFriends = this.friendController.getListFriend(username);
+        StringBuilder res = new StringBuilder();
+        for (Friend f: listFriends
+             ) {
+            res.append(responseOk);
+            res.append(";");
+            res.append(f.getFriendName());
+            res.append("|");
+            res.append(f.getModifiedDate());
+            res.append(";");
+        }
+        if(res.length() > 1){
+            sendResponse(res.toString());
+        } else {
+            sendResponse(responseNotOk);
+        }
 
     }
 
-    private void processAddFriend(String params){
+    private void processAddFriend(String[] params) {
+        String username = params[0];
+        String friendName = params[1];
+
+        if (this.friendController.addFriend(username, friendName)){
+            sendResponse(responseOk);
+        } else {
+            System.out.println("Add friend ok");
+            sendResponse(responseNotOk);
+        }
 
     }
 
-    private void processListMsgs(String params){
+    private void processListMsgs(String[] params) {
+        String sender = params[0];
+        String receiver = params[1];
 
+        List<Message> listMsg = this.chatController.getListMsg(sender, receiver);
+        StringBuilder res = new StringBuilder();
+        for (Message m: listMsg){
+            res.append(responseOk);
+            res.append(";");
+            res.append(m.getMsgId());
+            res.append("|");
+            res.append(m.getSender());
+            res.append("|");
+            res.append(m.getReceiver());
+            res.append("|");
+            res.append(m.getMsg());
+            res.append("|");
+            res.append(m.getCreateDate());
+            res.append(";");
+        }
+        if(res.length() > 1){
+            sendResponse(res.toString());
+        } else {
+            sendResponse(responseNotOk);
+        }
     }
 
-    private void processSendMsg(String params){
+    private void processSendMsg(String[] params) {
+        String sender = params[0];
+        String receiver = params[1];
+        String msg = params[2];
+
+        if (this.chatController.sendMsg(sender, receiver, msg)){
+            sendResponse("ok");
+        } else {
+            System.out.println("Sent msg failed");
+            sendResponse(responseNotOk);
+        }
 
     }
 }

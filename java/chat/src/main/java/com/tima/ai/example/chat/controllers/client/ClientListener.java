@@ -1,19 +1,22 @@
-package com.tima.ai.example.chat.controllers.server;
+package com.tima.ai.example.chat.controllers.client;
+
+import com.tima.ai.example.chat.controllers.server.ServerSession;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 
-public class ServerController implements Runnable {
+public class ClientListener implements Runnable{
 
     private ServerSocket serverSocket;
     private boolean isListening;
-
     private Thread thread;
 
-    public ServerController(){
+    private IClientListener clientController;
 
+    public ClientListener(IClientListener clientController){
+        this.clientController = clientController;
     }
 
     public synchronized void startListening(int port){

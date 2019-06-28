@@ -4,6 +4,7 @@ import com.mongodb.client.MongoCollection;
 import org.junit.jupiter.api.Test;
 
 import java.net.UnknownHostException;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -77,14 +78,22 @@ class MongoConnectionTest {
     }
 
     @Test
-    void getListFriends() {
+    void getListFriends() throws UnknownHostException {
+        MongoConnection mongoConnection = new MongoConnection();
+        List<Friend> listFriend = mongoConnection.getListFriends("tienthien");
+        assertEquals(1, listFriend.size());
     }
 
     @Test
-    void sendMessage() {
+    void sendMessage() throws UnknownHostException {
+        MongoConnection mongoConnection = new MongoConnection();
+        boolean done = mongoConnection.sendMessage("tienthien", "user2", "hi");
+        assertTrue(done);
+
     }
 
     @Test
     void getListMessages() {
+
     }
 }

@@ -4,66 +4,65 @@ import java.util.Date;
 
 public class Message {
 
-
-    private int msgId;
-    private int senderId;
-    private int receivedId;
-    private String msgBody;
-    private Date msgCreateDate;
+    private String msgId;
+    private String sender;
+    private String receiver;
+    private String msg;
+    private Date createDate;
 
     public Message() {
-        this.msgId = -1;
-        this.senderId = -1;
-        this.receivedId = -1;
-        this.msgBody = "";
-        this.msgCreateDate = new Date();
+        this.sender = "";
+        this.receiver = "";
+        this.msg = "";
+        this.createDate = new Date();
     }
 
-    public Message(int msgId, int senderId, int receivedId, String msgBody, Date msgCreateDate) {
+    public Message(String msgId, String sender, String receiver, String msg, Date createDate) {
         this.msgId = msgId;
-        this.senderId = senderId;
-        this.receivedId = receivedId;
-        this.msgBody = msgBody;
-        this.msgCreateDate = msgCreateDate;
+        this.sender = sender;
+        this.receiver = receiver;
+        this.msg = msg;
+        this.createDate = createDate;
     }
 
-    public int getMsgId() {
+    public String getMsgId() {
         return msgId;
     }
 
-    public void setMsgId(int msgId) {
-        this.msgId = msgId;
+    public String getSender() {
+        return sender;
     }
 
-    public int getSenderId() {
-        return senderId;
+    public void setSender(String sender) {
+        this.sender = sender;
     }
 
-    public void setSenderId(int senderId) {
-        this.senderId = senderId;
+    public String getReceiver() {
+        return receiver;
     }
 
-    public int getReceivedId() {
-        return receivedId;
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
     }
 
-    public void setReceivedId(int receivedId) {
-        this.receivedId = receivedId;
+    public String getMsg() {
+        return msg;
     }
 
-    public String getMsgBody() {
-        return msgBody;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public void setMsgBody(String msgBody) {
-        this.msgBody = msgBody;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public Date getMsgCreateDate() {
-        return msgCreateDate;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
-    public void setMsgCreateDate(Date msgCreateDate) {
-        this.msgCreateDate = msgCreateDate;
+    @Override
+    public String toString(){
+        return "msgId: " + this.msgId + "\nSender: " + this.sender + "\nReceiver: " + this.receiver + "\n Msg: " + this.msg;
     }
 }
