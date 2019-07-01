@@ -11,6 +11,7 @@ import java.io.DataOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class ServerSession implements Runnable {
     private ChatController chatController;
     private FriendController friendController;
 
-    private HashMap<String, Integer> mapUsernamePort;
+    private static HashMap<String, Integer> mapUsernamePort;
 
     public ServerSession(Socket s) throws IOException {
         this.socket = s;
@@ -77,7 +78,7 @@ public class ServerSession implements Runnable {
                 if (line == null) {
                     break;
                 }
-                System.out.println(line);
+                System.out.println("<---" + line);
                 String[] listParams = line.split("[|]");
 
                 String token = listParams[0];
@@ -88,7 +89,7 @@ public class ServerSession implements Runnable {
 
                 this.processCommand(token, cmd, param);
             }
-        } catch (EOFException e) {
+        } catch (EOFException | SocketException e) {
             System.out.println("Connection is disconnect");
         } catch (IOException e) {
             e.printStackTrace();
@@ -125,18 +126,36 @@ public class ServerSession implements Runnable {
             if (checkAuthod(token)) {
                 this.processSendMsg(params);
             }
-        } else if (cmd.equals("PORT")){
+        } else if (cmd.equals("ADD_ADDRESS")){
             if (checkAuthod(token)){
-                this.processMapPort(params);
+                this.processUpdateAddress(params);
+            }
+        } else if (cmd.equals("ADDRESS")) {
+            if (checkAuthod(token)){
+                this.processGetAddress(params);
             }
         }
     }
 
-    private void processMapPort(String[] params) {
+    private void processGetAddress(String[] params) {
         String username = params[0];
-        Integer port = Integer.parseInt(params[1]);
+        String address = this.authenticateController.getAddress(username);
+        if(address != null){
+            sendResponse(responseOk + "|" + address);
+        } else {
+            sendResponse(responseNotOk);
+        }
+    }
 
-        this.mapUsernamePort.put(username, port);
+    private void processUpdateAddress(String[] params) {
+        String username = params[0];
+        String address = params[1];
+
+        if (this.authenticateController.updateAddress(username, address)){
+            sendResponse(responseOk);
+        } else {
+            sendResponse(responseNotOk);
+        }
     }
 
     private boolean checkAuthod(String token) {
@@ -144,8 +163,7 @@ public class ServerSession implements Runnable {
     }
 
     private void sendResponse(String res) {
-//        res = res + "\r\n";
-
+        System.out.println("--->" + res);
         try {
             this.output.writeUTF(res);
             this.output.flush();

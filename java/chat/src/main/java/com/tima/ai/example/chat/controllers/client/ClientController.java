@@ -46,14 +46,16 @@ public class ClientController implements IMsgListener, IClientListener{
         return false;
     }
 
-    private void listenClientConnect(int port){
+    private void listenClientConnect(){
         this.clientListener = new ClientListener(this);
-        this.clientListener.startListening(port);
-        this.assignPort(this.username, port);
+        String address = this.clientListener.startListening(new int[] {9000, 9001, 9002, 9003, 9004, 9005, 9006, 9007, 9008, 9009, 9010, 9011, 9012});
+        System.out.println("Listen on:" + address);
+        this.assignAddress(this.username, address);
     }
 
     private String readLine() throws IOException {
         String line = this.inputServer.readUTF();
+        System.out.println("<---" + line);
         return line;
     }
 
@@ -61,6 +63,7 @@ public class ClientController implements IMsgListener, IClientListener{
         if (socketServer == null){
             throw new Exception("Haven't connect server yet.");
         }
+        System.out.println("--->" + line);
         this.outputServer.writeUTF(line);
         this.outputServer.flush();
     }
@@ -76,7 +79,7 @@ public class ClientController implements IMsgListener, IClientListener{
                 this.token = response.split("[|]")[1];
             }
             this.username = username;
-            listenClientConnect(9000);
+            listenClientConnect();
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -202,38 +205,50 @@ public class ClientController implements IMsgListener, IClientListener{
         return null;
     }
 
-    public void assignPort(String username, int port){
+    public void assignAddress(String username, String address){
         try {
-            sendLine(this.token + "|ADD_PORT|" + username + "|" + port);
+            sendLine(this.token + "|ADD_ADDRESS|" + username + "|" + address);
+            String response = readLine();
+            if (response.startsWith(responseNotOk)){
+                throw new Exception("update address failed");
+            }
         } catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    public int getPort(String username){
+    public String getAddress(String username){
         try {
-            sendLine(this.token + "|PORT|" + username);
+            sendLine(this.token + "|ADDRESS|" + username);
             String response = readLine();
             if (response.startsWith(responseNotOk)){
                 throw new IOException("Get list friend failed");
             }
-            response = response.substring(responseOk.length() + 1);
-            if(response.length() > 2){
-                return Integer.parseInt(response);
-            }
+            System.out.println(response);
+            return response.split("[|]")[1];
+
         } catch (Exception e){
             e.printStackTrace();
         }
-        return -1;
+        return null;
     }
 
-    public void connectClient(String ip, int port){
+    public boolean connectClient(String ip, int port){
         try {
             Socket s = new Socket(ip, port);
             this.clientSession = new ClientSession(s, this);
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return false;
+    }
+
+    public boolean connectClient(String address){
+        String[] addresss = address.split("[:]");
+        String ip = addresss[0];
+        int port = Integer.parseInt(addresss[1]);
+        return connectClient(ip, port);
     }
 
     @Override

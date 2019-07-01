@@ -6,6 +6,7 @@ import java.net.UnknownHostException;
 import java.util.List;
 
 public class MongoUtils {
+
     private static final String HOST = "localhost";
     private static final int PORT = 27017;
 

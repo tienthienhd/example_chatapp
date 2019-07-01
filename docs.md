@@ -202,7 +202,9 @@ eb.consumer("my.endpoit.one", message -> {
 
 });
 ```
-
+- supports pub/sub, point to point (request-response messaging)
+- Messages are published to an address and routed to one of the registered handlers.
+- If more than one handler is registered, a single handler will be selected by a non-strict(K nghiem ngat) round robin mechanism
 
 # Chat App (Message Passing)
 ## Architecture

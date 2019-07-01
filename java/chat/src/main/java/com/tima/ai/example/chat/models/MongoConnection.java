@@ -159,6 +159,18 @@ public class MongoConnection {
         return listMsgs;
     }
 
+    public String getAddress(String username){
+        Document q = new Document("username", username);
+        FindIterable<Document> iterDoc = this.userCollection.find(q).projection(fields(include("address"), excludeId()));
+        String address = iterDoc.first().getString("address");
+        return address;
+    }
+
+    public boolean updateAddress(String username, String address) {
+        UpdateResult updateResult = this.userCollection.updateOne(Filters.eq("username", username), Updates.set("address", address));
+        return true;
+    }
+
 //    public static void main(String[] args) throws UnknownHostException {
 //        MongoConnection mongoConnection = new MongoConnection();
 //        List<Message> listMsgs = mongoConnection.getListMessages("tienthien", "user2", 1, null);

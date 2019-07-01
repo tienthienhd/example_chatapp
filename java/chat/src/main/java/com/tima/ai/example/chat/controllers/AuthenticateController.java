@@ -31,6 +31,14 @@ public class AuthenticateController extends Controller {
         return false;
     }
 
+    public String getAddress(String username){
+        return Controller.mongoCon.getAddress(username);
+    }
+
+    public boolean updateAddress(String username, String address){
+        return Controller.mongoCon.updateAddress(username, address);
+    }
+
     public String login(String username, String password){
         boolean done = Controller.mongoCon.login(username, password);
         if(!done){
