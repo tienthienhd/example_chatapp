@@ -1,35 +1,44 @@
-package com.tima.ai.example.chat.controllers.server;
+package com.tima.ai.example.chat.controllers.client;
+
+import com.tima.ai.example.chat.controllers.server.ServerSession;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 
-public class ServerController implements Runnable {
+public class ClientListener implements Runnable{
 
     private ServerSocket serverSocket;
     private boolean isListening;
-
     private Thread thread;
 
-    public ServerController(){
+    private IClientListener clientController;
 
+    public ClientListener(IClientListener clientController){
+        this.clientController = clientController;
     }
 
-    public synchronized void startListening(int port){
+    public synchronized String startListening(int[] ports){
+        String address = null;
         if (this.thread == null){
-            try{
-                this.serverSocket = new ServerSocket(port);
-            } catch (IOException e) {
-                e.printStackTrace();
+            for (int port: ports) {
+                try {
+                    this.serverSocket = new ServerSocket(port);
+                    address = this.serverSocket.getInetAddress().getHostAddress() + ":" + this.serverSocket.getLocalPort();
+                    break;
+                } catch (IOException e) {
+                    continue;
+                }
             }
 
             this.isListening = true;
             this.thread = new Thread(this);
+//            this.thread.setDaemon(true);
             this.thread.start();
+            return address;
         }
-        System.out.println("Server is started and listening on port: " + port);
-
+        return address;
     }
 
     public synchronized void stopListening(){
