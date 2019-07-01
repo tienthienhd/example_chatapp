@@ -11,6 +11,7 @@
 - basic string process
 - Control multi thread
 - connect mysql using JDBC
+- connect mongodb
 - OOP
 
 # Mongo
@@ -29,11 +30,11 @@
   - Dependency management including automatic updating.
   - A large and growing repository of libraries.
   - Extensible, with the ability to easily write plugins in Java or scripting languages.
-  - Model-based builds - Maven is able to build any number of projects into predefined output types such as jar, war, metadata.
-  - Coherent site of project information - Using the same metadata as per the build process, maven is able to generate a website and a PDF including complete documentation.
-  - Release management and distribution publication - without additional configuration, maven will integrate with your source control system such as CVS and manages the release of a project.
-  - Backward Compatibility - You can easily port the multiple modules of a project.
-  - Parallel builds - It analyzes the project dependency graph and enables you to build schedule modules in parallel. -> performence improvents
+  - **Model-based builds** - Maven is able to build any number of projects into predefined output types such as jar, war, metadata.
+  - **Coherent site of project information** - Using the same metadata as per the build process, maven is able to generate a website and a PDF including complete documentation.
+  - **Release management and distribution publication** - without additional configuration, maven will integrate with your source control system such as CVS and manages the release of a project.
+  - **Backward Compatibility** - You can easily port the multiple modules of a project.
+  - **Parallel builds** - It analyzes the project dependency graph and enables you to build schedule modules in parallel. -> performence improvents
 
 ## POM
 - POM stands for Project Object Model, format xml, contains configurations and other informations of project.
@@ -152,9 +153,61 @@
 - event driven: not run unless they receive a msg.
 - pub-sub
 
-# Chat App
+## Create a Verticle
+- extends an AbstractVerticle
+- Override **start()** and **stop()** method
+- **start()** defines tasks during startup, with the goal to finish the whole deployment when other asynchronous taks are done.
+
+```java
+public class MyVerticle extends AbstractVerticle {
+   @Override
+   public void start(Future<Void> start) throws Exception {
+      start.complete();
+   }
+}
+```
+
+## Deploy a Verticle
+
+```java
+public static void main(String[] args) {
+
+        // simple deploy
+
+Vertx.vertx().deployVerticle(MyVerticle.class.getName());
+
+        // or with options and 10 instances
+
+Vertx.vertx().
+
+deployVerticle(MyVerticle.class.getName(),new DeploymentOptions().
+
+setConfig(new JsonObject().
+
+put("foo", "bar")).setInstances(10));
+
+ }
+```
+## Using the Event Bus
+- is the nervous system of Vert.x
+- Each Vert.x instance creates one single event bus instance
+- allows different parts of application to communicate with each other irrespective of what language they are written in
+
+```java
+EventBus eb = vertx.eventBus();
+
+eb.consumer("my.endpoit.one", message -> {
+
+    System.out.println("I have received a message: " + message.body());
+
+});
+```
+
+
+# Chat App (Message Passing)
 ## Architecture
 <img src="images/architecture_chatapp.png">
+
 ## Simple database
 - Friend: username, friend_name, created_date
 - User: username, password, token(JWT)
